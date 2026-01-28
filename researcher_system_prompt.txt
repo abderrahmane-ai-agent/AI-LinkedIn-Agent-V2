@@ -1,0 +1,160 @@
+{
+    "subflows": [
+        {
+            "flow": [
+                {
+                    "id": 3,
+                    "module": "groq:chatCompletion",
+                    "version": 1,
+                    "parameters": {
+                        "__IMTCONN__": 4675229
+                    },
+                    "mapper": {
+                        "model": "groq/compound-mini",
+                        "messages": [
+                            {
+                                "role": "system",
+                                "content": "You MUST use your built-in web search tool for every request. Search for the latest 2026 news on the user's topic. If you do not provide a search URL, you have failed the task"
+                            },
+                            {
+                                "role": "user",
+                                "content": "{{1.subject}}"
+                            }
+                        ],
+                        "max_tokens": "170",
+                        "response_format": "text"
+                    },
+                    "metadata": {
+                        "designer": {
+                            "x": 231,
+                            "y": 0
+                        },
+                        "restore": {
+                            "expect": {
+                                "model": {
+                                    "mode": "chose",
+                                    "label": "groq/compound-mini"
+                                },
+                                "messages": {
+                                    "mode": "chose",
+                                    "items": [
+                                        {
+                                            "role": {
+                                                "mode": "edit"
+                                            }
+                                        },
+                                        {
+                                            "role": {
+                                                "mode": "edit"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "response_format": {
+                                    "mode": "chose",
+                                    "label": "Text"
+                                }
+                            },
+                            "parameters": {
+                                "__IMTCONN__": {
+                                    "data": {
+                                        "scoped": "true",
+                                        "connection": "groq"
+                                    },
+                                    "label": "Agent_01:learning"
+                                }
+                            }
+                        },
+                        "parameters": [
+                            {
+                                "name": "__IMTCONN__",
+                                "type": "account:groq",
+                                "label": "Connection",
+                                "required": true
+                            }
+                        ],
+                        "expect": [
+                            {
+                                "name": "model",
+                                "type": "select",
+                                "label": "Model",
+                                "required": true
+                            },
+                            {
+                                "name": "messages",
+                                "spec": [
+                                    {
+                                        "name": "role",
+                                        "type": "select",
+                                        "label": "Role",
+                                        "options": [
+                                            {
+                                                "label": "System",
+                                                "value": "system"
+                                            },
+                                            {
+                                                "label": "User",
+                                                "value": "user"
+                                            },
+                                            {
+                                                "label": "Assistant",
+                                                "value": "assistant"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "name": "content",
+                                        "type": "text",
+                                        "label": "Content"
+                                    }
+                                ],
+                                "type": "array",
+                                "label": "Messages",
+                                "required": true
+                            },
+                            {
+                                "name": "max_tokens",
+                                "type": "number",
+                                "label": "Max tokens returned"
+                            },
+                            {
+                                "name": "temperature",
+                                "type": "number",
+                                "label": "Temperature"
+                            },
+                            {
+                                "name": "response_format",
+                                "type": "select",
+                                "label": "Response Format",
+                                "validate": {
+                                    "enum": [
+                                        "text",
+                                        "json_object"
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "top_p",
+                                "type": "number",
+                                "label": "Top P"
+                            },
+                            {
+                                "name": "frequency_penalty",
+                                "type": "number",
+                                "label": "Frequency Penalty"
+                            },
+                            {
+                                "name": "seed",
+                                "type": "number",
+                                "label": "Seed"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "version": 1
+    }
+}
