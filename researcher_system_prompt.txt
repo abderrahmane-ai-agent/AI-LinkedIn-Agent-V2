@@ -7,7 +7,7 @@
                     "module": "groq:chatCompletion",
                     "version": 1,
                     "parameters": {
-                        "__IMTCONN__": 4675229
+                        "__IMTCONN__": null
                     },
                     "mapper": {
                         "model": "groq/compound-mini",
@@ -61,7 +61,7 @@
                                         "scoped": "true",
                                         "connection": "groq"
                                     },
-                                    "label": "Agent_01:learning"
+                                    "label": "HIDDEN_LABEL"
                                 }
                             }
                         },
@@ -77,7 +77,7 @@
                             {
                                 "name": "model",
                                 "type": "select",
-                                "label": "Model",
+                                "label": "HIDDEN_LABEL",
                                 "required": true
                             },
                             {
